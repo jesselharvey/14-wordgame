@@ -3,3 +3,23 @@
   margin: 0;
   box-sizing: border-box;
 }
+#hmContainer {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  margin: 10% auto 0;
+}
+#line {
+  font-size: 25px;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 2.5% 0 0;
+}
+#guess {
+  width: 10%;
+}

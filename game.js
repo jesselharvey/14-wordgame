@@ -37,7 +37,9 @@ let filteredWords = (x) => {
 let trueWord = commonWords.filter(filteredWords)
 console.log(trueWord)
 
-const randomWord = trueWord[Math.floor(Math.random() * commonWords.length)]
+const randomWord = trueWord[Math.floor(Math.random() * trueWord.length)]
+console.log("Word is,", randomWord)
+
 // console.log(randomWord.filter(filteredWords))
 
 // let filterFunct = (function (x) {
@@ -87,6 +89,11 @@ const randomWord = trueWord[Math.floor(Math.random() * commonWords.length)]
 // })
 // document.querySelector("#test").innerHTML = mappedWord.join("")
 
+// try an if statement in the body of the for loop & the outside
+
+let guess = document.getElementById("guess").value
+let guessBtn = document.getElementById("guessSubmit")
+
 let dashes = ""
 for (let i = 0; i < randomWord.length; i++) {
   let currentLetter = randomWord[i]
@@ -94,17 +101,36 @@ for (let i = 0; i < randomWord.length; i++) {
   dashes += "_ "
   console.log(dashes)
   console.log("This is the current letter,", currentLetter)
-  // hiddenWord += dashes
-  // console.log(hiddenWord)
-  // hiddenWord = dashes.toString('')
 
-  // let wordArr = word.split("")
-  // const mappedWord = wordArr.map(function (item) {
-  //   console.log(mappedWord)
-  // })
-  // console.log(wordArr)
-  // console.log(wordArr[i])
+  // let guessFunct = (x) => {
+  //   if (currentLetter === guess) {
+  //     console.log(x.value)
+  //     return x.value.replace(currentLetter)
+  //   }
+  // }
+
+  // hiddenWord += dashes
+
+  // let guessFunct = (x) => {
+  //   if (currentLetter === guess) {
+  //     console.log(x.value)
+  //     return x.value.replace(currentLetter)
+  //   }
+  // }
 }
+let guessFunct = (x) => {
+  x.preventDefault()
+  for (let i = 0; i < randomWord.length; i++) {
+    let currentLetter = randomWord[i]
+    if (currentLetter === guess) {
+      console.log(x.value)
+      return x.value.replace(currentLetter)
+    }
+  }
+}
+
+guessBtn.addEventListener("click", guessFunct())
+
 document.querySelector("#line").innerHTML = dashes
 
 // let dashes = word.replace(word.charAt([i]), '_')
@@ -123,16 +149,38 @@ document.querySelector("#line").innerHTML = dashes
 
 // this should be a function right?
 // TEXT INPUT VS. TEST AQUÍ
-let guess = document.getElementById("guess").value
-let guessBtn = document.getElementById("guessButton")
-console.log(guessBtn)
-console.log(guess)
+// let guess = document.getElementById("guess").value
+// let guessBtn = document.getElementById("guessSubmit")
 
+// guessFunct = (x) => {
+//   x.preventDefault()
+//   guess.addEventListener("input", function(e) {
+//     // if (randomWord.includes(x.value)) {}
+//     for (let i = 0; i < randomWord.length; i++) {
+//       if (randomWord[i].includes(e.value)) {
+//         return e.value.replace(randomWord[i])
+//       }
+//      console.log([i])
+//     }
+//   })
+
+// guessFunct = (x) => {
+//   x.preventDefault()
+//   guess.addEventListener("input", function(e) {
+//     for (let i = 0; i < randomWord.length; i++) {}
+//   })
+
+//   if (randomWord.includes(x.value))
+//   console.log(x.value)
+// if (randomWord.includes(x.value))
+// }
+// console.log(guessBtn)
+// console.log(guess)
+// guessBtn.addEventListener("click", guessFunct)
 
 // grab input value from text field
-// check if input value is strictly equal to (===) a possible value in through the word,
+// check if input value is strictly equal to (===) a possible value in through the (var) randomWord,
 //    so either I've got to put a function within my preestablished for loop or make another one?
-
 
 //.........................................................................................
 //.FFFFFFFFFFFFFFFF..FIIII...INNNNNN.......NNNNN.........AAAAAAA.........LLLLL.............
@@ -173,7 +221,7 @@ console.log(guess)
 // let trueWord = commonWords.filter(filteredWords)
 // console.log(trueWord)
 
-// const randomWord = trueWord[Math.floor(Math.random() * commonWords.length)]
+// const randomWord = trueWord[Math.floor(Math.random() * trueWord.length)]
 
 // let dashes = ""
 // for (let i = 0; i < randomWord.length; i++) {

@@ -184,29 +184,32 @@ console.log("Word is,", randomWord)
 //    so either I've got to put a function within my preestablished for loop or make another one?
 
 let dashes = ""
-for (let i = 0; i < randomWord.length; i++) {
-  let currentLetter = randomWord[i]
-  //maybe do the backtick thing and just make boxes you dig?
-  // and give 'em something to qSelect /w
-  dashes += `<span class="letter"></span>`
-  // console.log(dashes)
-  // console.log("This is the current letter,", currentLetter)
+let dashesFunct = () => {
+  for (let i = 0; i < randomWord.length; i++) {
+    let currentLetter = randomWord[i]
+    //maybe do the backtick thing and just make boxes you dig?
+    // and give 'em something to qSelect /w
+    dashes += `<span class="letter"></span>`
+    // console.log(dashes)
+    // console.log("This is the current letter,", currentLetter)
+  }
 }
-console.log(dashes)
+// console.log(dashes)
 document.querySelector("#line").innerHTML = dashes
 
 // let guess = document.querySelector("#guess").value
 // console.log(guess)
 // let guessBtn = document.querySelector("#guessSubmit")
 let form = document.querySelector("form")
-let answer = randomWord.split("")
+let answer = randomWord
 let guesses = []
+let userAnswer = []
 
 let guessFunct = (e) => {
   let guess = document.querySelector("#guess").value
   e.preventDefault()
-  console.log(guesses)
-  console.log(answer)
+  // console.log(guesses)
+  // console.log(answer)
   // console.log(e.target)
   // console.log(e.target.id)
   // console.log(randomWord)
@@ -214,27 +217,51 @@ let guessFunct = (e) => {
     let currentLetter = answer[i]
     // console.log(currentLetter)
     // console.log(guess)
-// console.log(answer[i])
-    if (answer.includes(currentLetter)) {
-    //   answer += currentLetter
-    //   guesses.push(guess)
-    //   console.log(guesses)
-    //   console.log(answer)
-      // } else if (guess !== currentLetter) {
-      //   guessData.push(guess)
+    // console.log(answer[i])
+    // if (answer.includes(guess)) {
+    let x = null
+    if (guess === currentLetter) {
+      userAnswer.push(guess)
+      console.log(userAnswer)
+      //   console.log(guesses)
+      //   console.log(answer)
+    } else if (guess !== currentLetter) {
+      guesses.push(guess)
       //   console.log(guessData)
     }
+    let trueAnswer = userAnswer.filter((item) => item <= 1)
+    console.log(trueAnswer)
+    // for (let i = 0; i < answer.length; i++) {
+    //   console.log(answer[i])
+    //   if (userAnswer.includes(answer[i])) {
+    //     document.querySelector("#line").innerHTML = answer[i]
+    //   }
+    // }
+
+    // console.log(guess)
+
     // if (guesses.includes(randomWord.split(""))) {
     //   document.querySelector("#line").innerHTML = answer
     // }
     // dashes += replace
   }
+
+  for (let i = 0; i < answer.length; i++) {
+    console.log(answer[i])
+    if (userAnswer.includes(answer[i])) {
+      document.querySelector(".letter").innerHTML = answer[i]
+    }
+  }
+  // x = document.querySelector("#line").innerHTML = answer[i]
+  console.log(guess)
   // if (answer.includes(randomWord.split(""))) {
   //   return document.querySelector("#line").innerHTML = answer
   // }
   // document.querySelector(".letter").innerHTML = dashes
   // }
+  // return solution
 }
+
 form.addEventListener("click", guessFunct)
 
 //.........................................................................................

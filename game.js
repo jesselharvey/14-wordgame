@@ -1,6 +1,6 @@
 import { commonWords } from "./constants.js"
 
-console.log(commonWords)
+// console.log(commonWords)
 
 // document.querySelector("#test").innerHTML = commonWords[0]
 // /\ this was to test the commonWords arr /\
@@ -35,7 +35,7 @@ let filteredWords = (x) => {
   }
 }
 let trueWord = commonWords.filter(filteredWords)
-console.log(trueWord)
+// console.log(trueWord)
 
 const randomWord = trueWord[Math.floor(Math.random() * trueWord.length)]
 console.log("Word is,", randomWord)
@@ -91,47 +91,48 @@ console.log("Word is,", randomWord)
 
 // try an if statement in the body of the for loop & the outside
 
-let guess = document.getElementById("guess").value
-let guessBtn = document.getElementById("guessSubmit")
+// let guess = document.getElementById("guess").value
+// let guessBtn = document.getElementById("guessSubmit")
 
-let dashes = ""
-for (let i = 0; i < randomWord.length; i++) {
-  let currentLetter = randomWord[i]
-  // let hiddenWord = ""
-  dashes += "_ "
-  console.log(dashes)
-  console.log("This is the current letter,", currentLetter)
+// let dashes = ""
+// for (let i = 0; i < randomWord.length; i++) {
+//   let currentLetter = randomWord[i]
+//   // let hiddenWord = ""
+//   dashes += "_ "
+//   console.log(dashes)
+//   console.log("This is the current letter,", currentLetter)
 
-  // let guessFunct = (x) => {
-  //   if (currentLetter === guess) {
-  //     console.log(x.value)
-  //     return x.value.replace(currentLetter)
-  //   }
-  // }
+//   // let guessFunct = (x) => {
+//   //   if (currentLetter === guess) {
+//   //     console.log(x.value)
+//   //     return x.value.replace(currentLetter)
+//   //   }
+//   // }
 
-  // hiddenWord += dashes
+//   // hiddenWord += dashes
 
-  // let guessFunct = (x) => {
-  //   if (currentLetter === guess) {
-  //     console.log(x.value)
-  //     return x.value.replace(currentLetter)
-  //   }
-  // }
-}
-let guessFunct = (x) => {
-  x.preventDefault()
-  for (let i = 0; i < randomWord.length; i++) {
-    let currentLetter = randomWord[i]
-    if (currentLetter === guess) {
-      console.log(x.value)
-      return x.value.replace(currentLetter)
-    }
-  }
-}
+//   // let guessFunct = (x) => {
+//   //   if (currentLetter === guess) {
+//   //     console.log(x.value)
+//   //     return x.value.replace(currentLetter)
+//   //   }
+//   // }
+// }
+// document.querySelector("#line").innerHTML = dashes
+// // original funct
 
-guessBtn.addEventListener("click", guessFunct())
+// // let guessFunct = (x) => {
+// //   x.preventDefault()
+// //   for (let i = 0; i < randomWord.length; i++) {
+// //     let currentLetter = randomWord[i]
+// //     if (currentLetter === guess) {
+// //       console.log(x.value)
+// //       return x.value.replace(currentLetter)
+// //     }
+// //   }
+// // }
 
-document.querySelector("#line").innerHTML = dashes
+// // guessBtn.addEventListener("click", guessFunct())
 
 // let dashes = word.replace(word.charAt([i]), '_')
 // console.log(dashes)
@@ -181,6 +182,60 @@ document.querySelector("#line").innerHTML = dashes
 // grab input value from text field
 // check if input value is strictly equal to (===) a possible value in through the (var) randomWord,
 //    so either I've got to put a function within my preestablished for loop or make another one?
+
+let dashes = ""
+for (let i = 0; i < randomWord.length; i++) {
+  let currentLetter = randomWord[i]
+  //maybe do the backtick thing and just make boxes you dig?
+  // and give 'em something to qSelect /w
+  dashes += `<span class="letter"></span>`
+  // console.log(dashes)
+  // console.log("This is the current letter,", currentLetter)
+}
+console.log(dashes)
+document.querySelector("#line").innerHTML = dashes
+
+// let guess = document.querySelector("#guess").value
+// console.log(guess)
+// let guessBtn = document.querySelector("#guessSubmit")
+let form = document.querySelector("form")
+let answer = randomWord.split("")
+let guesses = []
+
+let guessFunct = (e) => {
+  let guess = document.querySelector("#guess").value
+  e.preventDefault()
+  console.log(guesses)
+  console.log(answer)
+  // console.log(e.target)
+  // console.log(e.target.id)
+  // console.log(randomWord)
+  for (let i = 0; i < randomWord.length; i++) {
+    let currentLetter = answer[i]
+    // console.log(currentLetter)
+    // console.log(guess)
+// console.log(answer[i])
+    if (answer.includes(currentLetter)) {
+    //   answer += currentLetter
+    //   guesses.push(guess)
+    //   console.log(guesses)
+    //   console.log(answer)
+      // } else if (guess !== currentLetter) {
+      //   guessData.push(guess)
+      //   console.log(guessData)
+    }
+    // if (guesses.includes(randomWord.split(""))) {
+    //   document.querySelector("#line").innerHTML = answer
+    // }
+    // dashes += replace
+  }
+  // if (answer.includes(randomWord.split(""))) {
+  //   return document.querySelector("#line").innerHTML = answer
+  // }
+  // document.querySelector(".letter").innerHTML = dashes
+  // }
+}
+form.addEventListener("click", guessFunct)
 
 //.........................................................................................
 //.FFFFFFFFFFFFFFFF..FIIII...INNNNNN.......NNNNN.........AAAAAAA.........LLLLL.............

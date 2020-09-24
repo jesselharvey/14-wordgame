@@ -10,9 +10,12 @@
   margin: 10% auto 0;
 }
 #line {
+  margin: 0% auto;
   font-size: 25px;
   letter-spacing: 5px;
   font-weight: bold;
+  display: inline-flex;
+  justify-content: space-evenly;
 }
 form {
   display: flex;
@@ -22,4 +25,9 @@ form {
 }
 #guess {
   width: 10%;
+}
+.letter {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #000;
 }

@@ -183,35 +183,47 @@ console.log("Word is,", randomWord)
 // check if input value is strictly equal to (===) a possible value in through the (var) randomWord,
 //    so either I've got to put a function within my preestablished for loop or make another one?
 
-let dashes = ""
-let dashesFunct = (word, guess) => {
+let userAnswer = []
+// let dashes = ""
+// let dashesFunct = (word, guess) => {
   // let dashes = word
   for (let i = 0; i < randomWord.length; i++) {
     let currentLetter = randomWord[i]
-    //maybe do the backtick thing and just make boxes you dig?
-    // and give 'em something to qSelect /w
-    dashes += `<span class="letter">${guess === currentLetter ? guess : ""}</span>`
+    userAnswer[i] = `<span class="letter"> </span>`
     // console.log(dashes)
     // console.log("This is the current letter,", currentLetter)
   }
-  document.querySelector("#line").innerHTML = dashes
-}
-dashesFunct(randomWord, guess)
-let guess = document.querySelector("#guess").value
+
+// }
+// dashesFunct(randomWord, guess)
+// let guess = document.querySelector("#guess").value
+// console.log(guess)
 // console.log(dashes)
 // document.querySelector("#line").innerHTML = dashes
 
 // let guess = document.querySelector("#guess").value
 // console.log(guess)
-// let guessBtn = document.querySelector("#guessSubmit")
+let guessBtn = document.querySelector("#guessSubmit")
 let form = document.querySelector("form")
 let answer = randomWord
 let guesses = []
-let userAnswer = []
 
-// let guessFunct = (e) => {
-  // let guess = document.querySelector("#guess").value
-  // e.preventDefault()
+
+let guessFunct = (e) => {
+  let guess = document.querySelector("#guess").value
+  console.log(guess)
+  guesses.push(guess)
+  e.preventDefault()
+  for (let i = 0; i < randomWord.length; i++) {
+    let currentLetter = randomWord[i]
+    if (guess === currentLetter) {
+      userAnswer[i] = `<span class="letter">${currentLetter}</span>`
+    }
+    // dashes += `<span class="letter">${guess === currentLetter ? guess : ""}</span>`
+    // console.log(dashes)
+    // console.log("This is the current letter,", currentLetter)
+  }
+  document.querySelector("#line").innerHTML = userAnswer.join("")
   // console.log(guesses)
   // console.log(answer)
   // console.log(e.target)
@@ -264,9 +276,9 @@ let userAnswer = []
   // document.querySelector(".letter").innerHTML = dashes
   // }
   // return solution
-// }
-
-// form.addEventListener("click", guessFunct)
+}
+document.querySelector("#line").innerHTML = userAnswer.join('')
+guessBtn.addEventListener("click", guessFunct)
 
 //.........................................................................................
 //.FFFFFFFFFFFFFFFF..FIIII...INNNNNN.......NNNNN.........AAAAAAA.........LLLLL.............
